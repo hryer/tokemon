@@ -1,0 +1,26 @@
+{
+  "env": {
+    "browser": false,
+    "node": true,
+    "jest": true
+  },
+  "parser": "babel-eslint",
+  "plugins": ["import", "react", "prettier", "jsx-a11y"],
+  "extends": ["react-app", "prettier", "prettier/react"],
+  "rules": {
+    "jsx-a11y/anchor-is-valid": "off",
+    "no-unused-vars": 0,
+    "no-param-reassign": ["error", { "props": false }],
+    "no-script-url": "off",
+    "no-mixed-operators": "off",
+    "space-before-function-paren": 0,
+    "quotes": 0,
+    "operator-linebreak": 0,
+    "react/jsx-tag-spacing": [
+      "error",
+      {
+        "beforeSelfClosing": "always"
+      }
+    ]
+  }
+}
