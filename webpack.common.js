@@ -7,7 +7,7 @@ const Dotenv = require('dotenv-webpack');
 module.exports = {
   entry: {
     app: './src/index.jsx',
-    vendors: ['react', 'react-dom', 'react-router-dom', 'styled-components', "@emotion/react", "@emotion/styled" ],
+    vendors: ['react', 'react-dom', 'react-router-dom', "@emotion/react", "@emotion/styled" ],
   },
   module: {
     rules: [
@@ -30,7 +30,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/i,
+        test: /\.(png|jpe?g|gif|svg|ico)$/i,
         use: [
           {
             loader: 'file-loader',
@@ -55,6 +55,7 @@ module.exports = {
       meta: {
         viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
       },
+      favicon: 'src/public/favicon.ico',
       // filename: "index.html",
       // template: path.resolve(__dirname, "dist", "index.html"),
       showErrors: true,

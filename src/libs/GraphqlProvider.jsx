@@ -13,7 +13,7 @@ const GraphQlProvider = ({ headers, children }) => {
 
   useEffect(() => {
     const httpLink = new HttpLink({
-      uri: process.env.REACT_APP_API_URL,
+      uri: process.env.REACT_APP_API_URL || 'https://graphql-pokeapi.vercel.app/api/graphql',
     });
 
     const authLink = new ApolloLink((operation, forward) => {
