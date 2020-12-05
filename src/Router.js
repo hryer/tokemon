@@ -3,10 +3,13 @@ import { Redirect } from 'react-router-dom';
 import lazyComponent from '@/components/lazyComponent';
 // import Pokemons from '@/pages/Pokemons';
 
-const Pokemons = lazy(() => import(/* webpackChunkName: "Pokemons" */ '@/pages/Pokemons'));
+const Pokemons = lazy(() =>
+  import(/* webpackChunkName: "Pokemons" */ '@/pages/Pokemons')
+);
+const Details = lazy(() =>
+  import(/* webpackChunkName: "Details" */ '@/pages/Details')
+);
 // const Inventory = lazy(() => import(/* webpackChunkName: "Inventory" */ '@/pages/Inventory'));
-// const Details = lazy(() => import(/* webpackChunkName: "Details" */ '@/pages/Details'));
-
 
 export const routes = [
   {
@@ -20,14 +23,14 @@ export const routes = [
     exact: true,
     component: lazyComponent(Pokemons),
   },
+  {
+    path: '/details',
+    exact: true,
+    component: lazyComponent(Details),
+  },
   // {
   //   path: '/inventory',
   //   exact: true,
   //   component: lazyComponent(Inventory),
   // },
-  // {
-  //   path: '/details',
-  //   exact: true,
-  //   component: lazyComponent(Details),
-  // }
 ];

@@ -2,7 +2,7 @@ import React from 'react';
 import { CardList } from './styles';
 import PokemonCard from '@/components/PokemonCard'
 
-const PokemonList = ({data}) => {
+const PokemonList = ({data, handleClick}) => {
   const { results } = data.pokemons;
 
   const onClickCard = () => {
@@ -13,7 +13,7 @@ const PokemonList = ({data}) => {
     <CardList>
       {
         results.map(pokemon => (
-          <PokemonCard key={pokemon.id} {...pokemon} onClick={() => onClickCard(pokemon)} />
+          <PokemonCard key={pokemon.id} onClick={() => handleClick(pokemon.id)} {...pokemon} />
         ))
       }
     </CardList>

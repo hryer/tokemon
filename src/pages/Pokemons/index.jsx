@@ -5,10 +5,10 @@ import Container from '@/components/Container';
 import PokemonList from '@/components/PokemonList';
 import styled from '@emotion/styled';
 
-const Pokemons = () => {
+const Pokemons = ({history}) => {
   /* ======================= State Management ======================= */
   const [variables, setVariables] = useState({
-    limit: 49,
+    limit: 39,
     offset: 0,
   });
 
@@ -17,6 +17,11 @@ const Pokemons = () => {
     loadDataPokemons,
     { loading, error, data: dataPokemons },
   ] = useLazyQuery(GET_POKEMONS);
+
+  // /* ===================== Functions ================== */
+  const handleClick = id => {
+    history.push(`details?id=${id}`);
+  };
 
   // /* ===================== Lifecycle ================== */
   useEffect(() => {
@@ -32,14 +37,7 @@ const Pokemons = () => {
   }, [dataPokemons]);
 
 
-  // const Card = styled.div`
-  //   display: 'flex';
-  //   width: '200px';
-  //   height: '200px';
-  //   padding: '5px';
-  //   background-color: 'green';
-  // `;
-  
+
   return (
     <Container>
       {loading ? (
@@ -49,7 +47,7 @@ const Pokemons = () => {
       ) : !dataPokemons ? (
         <div>No Data Found</div>
       ) : (
-        <PokemonList data={dataPokemons} />
+        <PokemonList data={dataPokemons} handleClick={handleClick} />
       )}
     </Container>
   );

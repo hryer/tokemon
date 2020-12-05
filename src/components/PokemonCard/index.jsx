@@ -1,11 +1,14 @@
 import React from 'react';
-import { Card, CardImage } from './styles';
+import { Card, CardInfo } from './styles';
 
-const PokemonCard = ({ id, image, name }) => {
-  console.log(image)
+const PokemonCard = ({ id, image, name, onClick }) => {
+  console.log(onClick)
   return (
-    <Card>
-      <CardImage imageUri={image} />
+    <Card onClick={onClick}>
+      <img src={image} alt={name} height='90px' width='90px' style={{margin:'0 auto'}} />
+      <CardInfo>
+        {name}
+      </CardInfo>
     </Card>
   );
 };
