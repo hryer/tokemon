@@ -7,7 +7,7 @@ const Dotenv = require('dotenv-webpack');
 module.exports = {
   entry: {
     app: './src/index.jsx',
-    vendors: ['react', 'react-dom', 'react-router-dom', 'styled-components'],
+    vendors: ['react', 'react-dom', 'react-router-dom', 'styled-components', "@emotion/react", "@emotion/styled" ],
   },
   module: {
     rules: [
@@ -46,7 +46,7 @@ module.exports = {
     },
   },
   plugins: [
-    // new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+    new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new Dotenv({
       path: './.env',
     }),
@@ -55,7 +55,7 @@ module.exports = {
       meta: {
         viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
       },
-      // filename: path.resolve(__dirname, "dist", "index.html"),
+      // filename: "index.html",
       // template: path.resolve(__dirname, "dist", "index.html"),
       showErrors: true,
     }),

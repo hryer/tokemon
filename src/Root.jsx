@@ -7,8 +7,8 @@ import { ApolloProvider } from '@apollo/react-hooks';
 
 export default function Root() {
   return (
-    // <GraphQlProvider headers={client}>
+    <GraphQlProvider headers={client}>
       <div>Just a test</div>
-    // </GraphQlProvider>
+    </GraphQlProvider>
   );
 }
