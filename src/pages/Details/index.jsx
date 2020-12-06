@@ -7,7 +7,7 @@ import PokemonList from '@/components/PokemonList';
 import Loading from '@/components/Loading';
 import Navbar from '@/components/Navbar';
 import { Item } from './styles';
-import { Carousel, Typography, Button } from 'antd';
+import { Carousel, Typography, Button, Modal } from 'antd';
 import { gatchaChances } from '@/libs/utils';
 
 const { Title } = Typography;
@@ -16,6 +16,7 @@ const Details = ({ history, location }) => {
   const { name } = qs.parse(location.search);
   
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [chance, setChance] = useState(false);
 
   const { loading, error, data: dataPokemon } = useQuery(GET_POKEMON, {
     variables: { name },
@@ -38,12 +39,24 @@ const Details = ({ history, location }) => {
   };
 
   const handleGatcha = useCallback(() => {
-    const chance = gatchaChances();
-
-    if(chance){
-
+    const modalFail = () => {
+      Modal.error({
+        title: 'Sorry, You got nothing',
+        content: `Gatcha again to get ${name}`,
+      });
     }
-  },[]);
+
+    const gatchaChance = gatchaChances();
+
+    if(gatchaChance){
+
+    }else{
+      modalFail();
+    }
+    
+  },[name]);
+
+  
 
   // /* ===================== Lifecycle ================== */
 
@@ -94,7 +107,7 @@ const Details = ({ history, location }) => {
               />
             </Item>
           </Carousel>
-          <Button type='primary' size='large' onClick={() => handleBack()}>
+          <Button type='primary' size='large' onClick={() => handleGatcha()}>
             Gatcha
           </Button>
           <section>
