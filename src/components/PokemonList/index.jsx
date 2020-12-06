@@ -13,7 +13,7 @@ const PokemonList = ({data, handleClick}) => {
     <CardList>
       {
         results.map(pokemon => (
-          <PokemonCard key={pokemon.id} onClick={() => handleClick(pokemon.id)} {...pokemon} />
+          <PokemonCard key={pokemon.id} onClick={() => handleClick(pokemon.name)} {...pokemon} />
         ))
       }
     </CardList>

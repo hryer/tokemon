@@ -5,7 +5,7 @@ const PokemonCard = ({ id, image, name, onClick }) => {
   console.log(onClick)
   return (
     <Card onClick={onClick}>
-      <img src={image} alt={name} height='90px' width='90px' style={{margin:'0 auto'}} />
+      <img src={image} alt={name} height='95px' width='95px' style={{margin:'0 auto'}} />
       <CardInfo>
         {name}
       </CardInfo>

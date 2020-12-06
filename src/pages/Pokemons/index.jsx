@@ -1,14 +1,17 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { GET_POKEMONS } from '@/queries/pokemons';
+import { Content } from './styles';
 import Container from '@/components/Container';
+import Loading from '@/components/Loading';
+import Navbar from '@/components/Navbar';
 import PokemonList from '@/components/PokemonList';
-import styled from '@emotion/styled';
+import { Pagination } from 'antd';
 
-const Pokemons = ({history}) => {
+const Pokemons = ({ history }) => {
   /* ======================= State Management ======================= */
   const [variables, setVariables] = useState({
-    limit: 39,
+    limit: 19,
     offset: 0,
   });
 
@@ -19,8 +22,8 @@ const Pokemons = ({history}) => {
   ] = useLazyQuery(GET_POKEMONS);
 
   // /* ===================== Functions ================== */
-  const handleClick = id => {
-    history.push(`details?id=${id}`);
+  const handleClick = (name) => {
+    history.push(`details?name=${name}`);
   };
 
   // /* ===================== Lifecycle ================== */
@@ -32,22 +35,23 @@ const Pokemons = ({history}) => {
   }, [variables]);
 
   useEffect(() => {
-    // console.log(dataPokemons);
-    console.log('load success')
+    console.log(dataPokemons);
   }, [dataPokemons]);
-
-
 
   return (
     <Container>
+      <Navbar />
       {loading ? (
-        <div> Loading ...</div>
+        <Loading />
       ) : error ? (
         <div>There is an error. Try refresh!</div>
       ) : !dataPokemons ? (
         <div>No Data Found</div>
       ) : (
-        <PokemonList data={dataPokemons} handleClick={handleClick} />
+        <Content>
+          <PokemonList data={dataPokemons} handleClick={handleClick} />
+          <Pagination size="small" defaultCurrent={6} total={500} />
+        </Content>
       )}
     </Container>
   );

@@ -2,15 +2,15 @@ import styled from '@emotion/styled';
 
 export const Card = styled.div`
   display: flex;
-  width: 125px;
-  height: 125px;
+  width: 145px;
+  height: 145px;
   margin: 0;
   padding: 0;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   background-color: cyan;
-  color: black;
+  color: pink;
   cursor: pointer;
 `;
 

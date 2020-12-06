@@ -17,10 +17,23 @@ module.exports = {
         use: ['babel-loader', 'eslint-loader'],
       },
       {
-        test: /\.css$/i,
+        test: /\.(css|less)$/i,
         use: [
           'style-loader',
           'css-loader',
+          {
+            loader: 'less-loader', // compiles Less to CSS
+            options: {
+              lessOptions: { // If you are using less-loader@5 please spread the lessOptions to options directly
+                modifyVars: {
+                  'primary-color': '#FEC8D8',
+                  'link-color': '#FEC8D8',
+                  'border-radius-base': '2px',
+                },
+                javascriptEnabled: true,
+              },
+            },
+          },
           {
             loader: 'postcss-loader',
             options: {

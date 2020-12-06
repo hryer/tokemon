@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import GraphQlProvider from '@/libs/GraphqlProvider';
+import 'antd/dist/antd.css';
 import './public/favicon.ico';
 import Apps from './Apps';
 

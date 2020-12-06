@@ -9,7 +9,7 @@ const Pokemons = lazy(() =>
 const Details = lazy(() =>
   import(/* webpackChunkName: "Details" */ '@/pages/Details')
 );
-// const Inventory = lazy(() => import(/* webpackChunkName: "Inventory" */ '@/pages/Inventory'));
+const Inventory = lazy(() => import(/* webpackChunkName: "Inventory" */ '@/pages/Inventory'));
 
 export const routes = [
   {
@@ -28,9 +28,13 @@ export const routes = [
     exact: true,
     component: lazyComponent(Details),
   },
-  // {
-  //   path: '/inventory',
-  //   exact: true,
-  //   component: lazyComponent(Inventory),
-  // },
+  {
+    path: '/inventory',
+    exact: true,
+    component: lazyComponent(Inventory),
+  },
+  {
+    path: '*',
+    component: () => <Redirect to='/404' />,
+  },
 ];

@@ -7,6 +7,8 @@ const MyPokemonDispatch = createContext();
 const PokemonProvider = ({ children }) => {
   /*
     PokemonList :
+    id
+    Nick
     Name
     Img
     Pokemon
@@ -14,14 +16,6 @@ const PokemonProvider = ({ children }) => {
   */
   const [pokemons, setPokemons] = useState([]);
 
-  const gatchaPokemon = useCallback(() => {
-    const chance = Math.random() * 100;
-
-    if(chance > 50){
-      // getRandom
-    }
-  },[]);
-  
   //   const pokemonsReducer = (state, action) => {
   //   switch (action.type) {
   //     case 'add': {
@@ -47,10 +41,8 @@ const PokemonProvider = ({ children }) => {
     setPokemons(tmp);
   }
 
-  const catchPokemon = () => {}
-
   return (
-    <MyPokemonDispatch.Provider value={{addPokemon, removePokemon, catchPokemon}}>
+    <MyPokemonDispatch.Provider value={{addPokemon, removePokemon}}>
       <MyPokemon.Provider value={pokemons}>
         {children}
       </MyPokemon.Provider>
