@@ -37,10 +37,6 @@ const Pokemons = ({ history }) => {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [variables]);
-
-  useEffect(() => {
-    console.log(dataPokemons);
-  }, [dataPokemons]);
   
   return (
     <Container>
@@ -54,7 +50,7 @@ const Pokemons = ({ history }) => {
       ) : (
         <Content>
           <PokemonList data={dataPokemons?.pokemons?.results} handleClick={handleClick} />
-          <Pagination size="small" defaultCurrent={6} total={500} />
+          <Pagination size="small" defaultCurrent={variables.offset} total={dataPokemons?.pokemons?.count} />
         </Content>
       )}
     </Container>

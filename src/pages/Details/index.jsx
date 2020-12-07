@@ -15,6 +15,7 @@ import { usePokemonDispatch } from '@/hooks/PokemonContext';
 const { Title } = Typography;
 
 const Details = ({ history, location }) => {
+
   const { name } = qs.parse(location.search);
 
   const [chance, setChance] = useState(false);
@@ -26,7 +27,6 @@ const Details = ({ history, location }) => {
   });
 
   const onCreate = values => {
-    console.log(values);
     dispatch({
       type: 'ADD',
       payload: {
@@ -40,6 +40,7 @@ const Details = ({ history, location }) => {
 
   const handleBack = () => {
     history.goBack();
+    // history.push('pokemons');
   };
 
   const handleGatcha = useCallback(() => {
@@ -64,7 +65,7 @@ const Details = ({ history, location }) => {
 
   return (
     <Container>
-      <Navbar type='detail' handleBack={handleBack} />
+      <Navbar type='detail' title="Pokemon Detail" handleBack={handleBack} />
       {loading ? (
         <Loading />
       ) : error ? (

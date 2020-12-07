@@ -8,7 +8,7 @@ export const CardList = styled.div`
   width: 100%;
   margin: 5px auto 5px auto;
   padding: 10px 0;
-  background-color: sandybrown;
-  color:red;
+  /* background-color: sandybrown; */
+  /* color:red; */
 `;
 

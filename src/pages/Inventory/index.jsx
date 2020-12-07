@@ -1,12 +1,11 @@
 import React from 'react';
-import { usePokemonState, usePokemonDispatch } from '@/hooks/PokemonContext';
+import { usePokemonState } from '@/hooks/PokemonContext';
 import Container from '@/components/Container';
 import PokemonList from '@/components/PokemonList';
 import Navbar from '@/components/Navbar';
 
 const Inventory = ({ history }) => {
   const { pokemons } = usePokemonState();
-  console.log(pokemons);
 
   const handleClick = (name) => {
     history.push(`details?name=${name}`);
@@ -14,10 +13,11 @@ const Inventory = ({ history }) => {
 
   const handleBack = () => {
     history.goBack();
+    // history.push('pokemons');
   };
   return (
     <Container>
-      <Navbar type="detail" handleBack={handleBack} />
+      <Navbar type="detail" title="My Pokemon" handleBack={handleBack} />
       <PokemonList data={pokemons} handleClick={handleClick} />
     </Container>
   );

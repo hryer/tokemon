@@ -1,14 +1,14 @@
 import React from 'react';
 import { Nav, NavItem } from './styles';
 import { ArrowLeftOutlined } from '@ant-design/icons';
-
+import { Typography } from 'antd';
 import { usePokemonState } from '@/hooks/PokemonContext';
+import pokeIcon from '@/public/pokeIcon.svg'
 
 const Navbar = ({ type, ...props }) => {
   const ctx = usePokemonState();
-  console.log('haha');
-  console.log(ctx.pokemons);
-  console.log('haha');
+  const { Title } = Typography;
+
   switch (type) {
     case 'detail':
       return (
@@ -19,8 +19,8 @@ const Navbar = ({ type, ...props }) => {
               onClick={() => props.handleBack()}
             />
           </NavItem>
-          <NavItem>{props?.title}</NavItem>
-          <NavItem>
+          <NavItem><Title level={3}>{props?.title}</Title></NavItem>
+          <NavItem> 
           </NavItem>
         </Nav>
       );
@@ -28,10 +28,10 @@ const Navbar = ({ type, ...props }) => {
       return (
         <Nav>
           <NavItem></NavItem>
-          <NavItem>Logo</NavItem>
+          <NavItem><img src={pokeIcon} alt="tokemon" height="40px" width="40px" /></NavItem>
           <NavItem>
             <a onClick={() => props.handleInventory()}>
-              My Pokemon: {ctx.pokemons.length}
+              <Title level={5} underline >My Pokemon: {ctx.pokemons.length}</Title> 
             </a>
           </NavItem>
         </Nav>
