@@ -11,23 +11,26 @@ const reducer = (state, action) => {
   const { payload } = action;
   switch (action.type) {
     case "ADD":
-      return addPokemon(state, payload.pokemonItem);
+      return addPokemon(state, payload);
     case "REMOVE":
-      return removePokemon(state, payload.id);
+      return removePokemon(state, payload);
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
 }};
 
 const addPokemon = (state, pokemonItem) => {
-  const listPokemon = [...state.pokemons];
+  console.log(state.pokemons);
+  
+  const {pokemons} = state;
+
   const newPokemon = {
-    pokemonId: listPokemon.length + 1,
+    id: pokemons.length + 1,
     nickname: pokemonItem.nickname,
     image: pokemonItem.image,
     name: pokemonItem.name
   };
   return {
-    pokemons: [...state.list, newPokemon]
+    pokemons: [...state.pokemons, newPokemon]
   };
 }
 
@@ -37,6 +40,7 @@ const removePokemon = (state, id) => {
 
 const PokemonProvider = ({ children }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
+  console.log(state);
   return (
     <PokemonStateContext.Provider value={state}>
       <PokemonDispatchContext.Provider value={dispatch}>

@@ -5,3 +5,9 @@ export const Item = styled.div`
   margin: auto;
   text-align: center;
 `;
+
+export const ModalForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`

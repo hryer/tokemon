@@ -3,7 +3,7 @@ import { CardList } from './styles';
 import PokemonCard from '@/components/PokemonCard'
 
 const PokemonList = ({data, handleClick}) => {
-  const { results } = data.pokemons;
+  // const { results } = data.pokemons;
 
   const onClickCard = () => {
     console.log('hehe');
@@ -12,7 +12,7 @@ const PokemonList = ({data, handleClick}) => {
   return (
     <CardList>
       {
-        results.map(pokemon => (
+        data.map(pokemon => (
           <PokemonCard key={pokemon.id} onClick={() => handleClick(pokemon.name)} {...pokemon} />
         ))
       }

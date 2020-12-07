@@ -26,6 +26,10 @@ const Pokemons = ({ history }) => {
     history.push(`details?name=${name}`);
   };
 
+  const handleInventory = () => {
+    history.push('inventory');
+  }
+
   // /* ===================== Lifecycle ================== */
   useEffect(() => {
     loadDataPokemons({
@@ -37,10 +41,10 @@ const Pokemons = ({ history }) => {
   useEffect(() => {
     console.log(dataPokemons);
   }, [dataPokemons]);
-
+  
   return (
     <Container>
-      <Navbar />
+      <Navbar handleInventory={handleInventory} />
       {loading ? (
         <Loading />
       ) : error ? (
@@ -49,7 +53,7 @@ const Pokemons = ({ history }) => {
         <div>No Data Found</div>
       ) : (
         <Content>
-          <PokemonList data={dataPokemons} handleClick={handleClick} />
+          <PokemonList data={dataPokemons?.pokemons?.results} handleClick={handleClick} />
           <Pagination size="small" defaultCurrent={6} total={500} />
         </Content>
       )}
