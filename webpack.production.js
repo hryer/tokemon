@@ -1,3 +1,4 @@
+const { AlignLeftOutlined } = require('@ant-design/icons');
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common');
@@ -13,9 +14,13 @@ module.exports = merge(common, {
     runtimeChunk: true,
     minimize: true,
     splitChunks: {
-      chunks: 'all',
+      chunks: 'async',
       maxInitialRequests: Infinity,
-      minSize: 0,
+      minSize: 1000,
+      minChunks:1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      name: true,
       cacheGroups: {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
@@ -25,6 +30,12 @@ module.exports = merge(common, {
             )[1];
             return `pkg.${packageName.replace('@', '')}`;
           },
+          chunks: 'all'
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
         },
       },
     },
