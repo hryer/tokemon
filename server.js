@@ -4,9 +4,7 @@ var expressStaticGzip = require('express-static-gzip');
 
 const app = express();
 
-app.use(express.static("dist"));
-
-app.use('/*', expressStaticGzip(path.join(__dirname, "dist/"), {
+app.use(expressStaticGzip(path.join(__dirname, "dist"), {
   enableBrotli: true,
   orderPreference: ['br','gz'],
   setHeaders: function (res, path) {
@@ -14,9 +12,9 @@ app.use('/*', expressStaticGzip(path.join(__dirname, "dist/"), {
   }
 }));
 
-// app.use("/*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "dist/index.html"));
-// });
+  app.use("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "dist/index.html"));
+  });
 
 const PORT = process.env.PORT || 3000;
 
