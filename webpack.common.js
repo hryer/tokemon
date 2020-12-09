@@ -76,7 +76,7 @@ module.exports = {
   ],
   output: {
     filename: '[name].bundle.js',
-    chunkFilename: '[name].[hash].bundle.js',
+    chunkFilename: '[name].[chunkhash].bundle.js',
   },
 };
 

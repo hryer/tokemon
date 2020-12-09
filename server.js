@@ -1,13 +1,22 @@
 const express = require("express");
 const path = require("path");
+var expressStaticGzip = require('express-static-gzip');
 
 const app = express();
 
 app.use(express.static("dist"));
 
-app.use("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist/index.html"));
-});
+app.use('/*', expressStaticGzip(path.join(__dirname, "dist/"), {
+  enableBrotli: true,
+  orderPreference: ['br','gz'],
+  setHeaders: function (res, path) {
+    res.setHeader("Cache-Control", "public, max-age=31536000");
+  }
+}));
+
+// app.use("/*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "dist/index.html"));
+// });
 
 const PORT = process.env.PORT || 3000;
 
