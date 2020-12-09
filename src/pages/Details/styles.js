@@ -6,8 +6,14 @@ export const Item = styled.div`
   text-align: center;
 `;
 
+export const Title = styled.h1`
+  font-weight:800;
+  color: #FFFFFF;
+  margin-top: 25px;
+`;
+
 export const ModalForm = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-`
+`;

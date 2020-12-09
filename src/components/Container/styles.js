@@ -6,7 +6,7 @@ export const MobileContainer = styled.div`
   min-height: 100vh;
   max-width: 480px;
   margin: 0 auto;
-  background-color: pink;
+  background-color: #8A8DA2;
   color: white;
   text-align: center;
 `;

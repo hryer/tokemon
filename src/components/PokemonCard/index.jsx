@@ -3,6 +3,8 @@ import { Card, CardInfo } from './styles';
 import { useLocation } from 'react-router-dom';
 import { Button } from 'antd';
 import { usePokemonDispatch } from '@/hooks/PokemonContext';
+import { MinusCircleFilled } from '@ant-design/icons';
+
 
 const PokemonCard = ({ pokemon, onClick }) => {
   let location = useLocation();
@@ -29,6 +31,7 @@ const PokemonCard = ({ pokemon, onClick }) => {
           ghost
           danger
           size='small'
+          icon={<MinusCircleFilled />}
           onClick={() =>
             dispatch({
               type: 'REMOVE',

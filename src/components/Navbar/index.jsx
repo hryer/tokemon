@@ -1,13 +1,12 @@
 import React from 'react';
-import { Nav, NavItem } from './styles';
+import { Nav, NavItem, NavTitle, NavInformation } from './styles';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
 import { usePokemonState } from '@/hooks/PokemonContext';
-import pokeIcon from '@/public/pokeIcon.svg'
+import pokeIcon from '@/public/pokeIcon.svg';
 
 const Navbar = ({ type, ...props }) => {
   const ctx = usePokemonState();
-  const { Title } = Typography;
 
   switch (type) {
     case 'detail':
@@ -15,24 +14,27 @@ const Navbar = ({ type, ...props }) => {
         <Nav>
           <NavItem>
             <ArrowLeftOutlined
-              style={{ fontSize: '36px' }}
+              style={{ fontSize: '1.5em' }}
               onClick={() => props.handleBack()}
             />
           </NavItem>
-          <NavItem><Title level={3}>{props?.title}</Title></NavItem>
-          <NavItem> 
+          <NavItem>
+            <NavTitle>{props?.title}</NavTitle>
           </NavItem>
+          <NavItem></NavItem>
         </Nav>
       );
     default:
       return (
         <Nav>
           <NavItem></NavItem>
-          <NavItem><img src={pokeIcon} alt="tokemon" height="40px" width="40px" /></NavItem>
           <NavItem>
-            <a onClick={() => props.handleInventory()}>
-              <Title level={5} underline >My Pokemon: {ctx.pokemons.length}</Title> 
-            </a>
+            <img src={pokeIcon} alt='tokemon' height='40px' width='40px' />
+          </NavItem>
+          <NavItem>
+            <NavInformation onClick={() => props.handleInventory()}>
+              My Pokemon: {ctx.pokemons.length}
+            </NavInformation>
           </NavItem>
         </Nav>
       );

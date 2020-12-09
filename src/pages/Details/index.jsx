@@ -6,13 +6,12 @@ import { GET_POKEMON } from '@/queries/pokemons';
 import PokemonList from '@/components/PokemonList';
 import Loading from '@/components/Loading';
 import Navbar from '@/components/Navbar';
-import { Item } from './styles';
-import { Carousel, Typography, Button, Modal } from 'antd';
+import { Title, Item } from './styles';
+import { Carousel, Button, Modal } from 'antd';
 import { gatchaChances } from '@/libs/utils';
 import ModalForm from '@/components/ModalForm';
+import PokeDesc from '@/components/PokeDesc';
 import { usePokemonDispatch } from '@/hooks/PokemonContext';
-
-const { Title } = Typography;
 
 const Details = ({ history, location }) => {
 
@@ -105,21 +104,10 @@ const Details = ({ history, location }) => {
               />
             </Item>
           </Carousel>
-          <Button type='primary' size='large' onClick={() => handleGatcha()}>
+          <Button type='primary' size='large' onClick={() => handleGatcha()} shape="round">
             Gatcha
           </Button>
-          <section>
-            <label>Types</label>
-            {dataPokemon.pokemon.types.map(typePoke => (
-              <div key={typePoke.slot}>{typePoke.type.name}</div>
-            ))}
-          </section>
-          <section>
-            <label>Moves</label>
-            {dataPokemon.pokemon.moves.slice(-5).map(movePoke => (
-              <div key={movePoke.move.name}>{movePoke.move.name}</div>
-            ))}
-          </section>
+          <PokeDesc types={dataPokemon.pokemon.types} moves={dataPokemon.pokemon.moves} />
           <ModalForm
             visible={visible}
             onCreate={onCreate}

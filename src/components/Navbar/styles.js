@@ -7,12 +7,22 @@ export const Nav = styled.div`
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   justify-items: center;
+  align-items: center;
   width: 100%;
-  height: 55px;
-  background-color: seagreen;
-  /* color: white; */
+  height: 75px;
+  background-color: #20204f;
 `;
 
 export const NavItem = styled.div`
-  padding:5px;
-`
+  padding: 5px;
+`;
+
+export const NavTitle = styled.h2`
+  color:#f8fbfd;
+  margin: 0;
+`;
+
+export const NavInformation = styled.h3`
+  color: #f8fbfd;
+  text-decoration: underline;
+`;
