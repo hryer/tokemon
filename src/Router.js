@@ -1,15 +1,15 @@
 import React, { lazy } from 'react';
 import { Redirect } from 'react-router-dom';
-import lazyComponent from '@/components/lazyComponent/index';
+import lazyComponent from './components/LazyComponent';
 // import Pokemons from '@/pages/Pokemons';
 
 const Pokemons = lazy(() =>
-  import(/* webpackChunkName: "Pokemons" */ '@/pages/Pokemons/index')
+  import(/* webpackChunkName: "Pokemons" */ './pages/Pokemons')
 );
 const Details = lazy(() =>
-  import(/* webpackChunkName: "Details" */ '@/pages/Details/index')
+  import(/* webpackChunkName: "Details" */ './pages/Details')
 );
-const Inventory = lazy(() => import(/* webpackChunkName: "Inventory" */ '@/pages/Inventory/index'));
+const Inventory = lazy(() => import(/* webpackChunkName: "Inventory" */ './pages/Inventory'));
 
 export const routes = [
   {
