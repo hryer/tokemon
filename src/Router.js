@@ -33,8 +33,8 @@ export const routes = [
     exact: true,
     component: lazyComponent(Inventory),
   },
-  {
-    path: '*',
-    component: () => <Redirect to='/404' />,
-  },
+  // {
+  //   path: '*',
+  //   component: () => <Redirect to='/404' />,
+  // },
 ];
