@@ -25,4 +25,5 @@ export const NavTitle = styled.h2`
 export const NavInformation = styled.h3`
   color: #f8fbfd;
   text-decoration: underline;
+  cursor: pointer;
 `;
